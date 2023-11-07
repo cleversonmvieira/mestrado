@@ -3,7 +3,7 @@ from matplotlib import pyplot as plt
 import numpy as np
 
 
-img_path = 'C:/Users/cleverson.vieira/Desktop/projeto-glaucoma_bkp_25042023/projeto-glaucoma/data/acrima/validation/positive/5826.jpg'
+img_path = 'data/acrima/validation/positive/5826.jpg'
 img = cv2.imread(img_path)
 img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 img = cv2.resize(img, (224, 224))  # Redimensionar para o tamanho esperado pela CNN
