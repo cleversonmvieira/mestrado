@@ -22,6 +22,7 @@ from tensorflow.keras.applications.resnet50 import ResNet50
 epochs = 10
 resolution = 224
 batch_size = 8
+
 # Definir o número de partições para a validação cruzada estratificada
 k = 5
 
