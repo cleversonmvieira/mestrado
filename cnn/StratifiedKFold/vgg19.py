@@ -22,15 +22,16 @@ from keras.applications.vgg19 import VGG19
 epochs = 10
 resolution = 224
 batch_size = 8
+
 # Definir o número de partições para a validação cruzada estratificada
 k = 5
 
 # ----------------------------------------------------------------
 # Caminho para os diretórios
 # ----------------------------------------------------------------
-models_dir = 'C:/Users/cleverson.vieira/Desktop/projeto-glaucoma_bkp_25042023/projeto-glaucoma/models'
-reports_dir = 'C:/Users/cleverson.vieira/Desktop/projeto-glaucoma_bkp_25042023/projeto-glaucoma/reports'
-data_path = "C:/Users/cleverson.vieira/Desktop/projeto-glaucoma_bkp_25042023/projeto-glaucoma/data/acrima_wm/data_augmentation"
+models_dir = 'Diretório para salvar os modelos treinados'
+reports_dir = 'Diretório para salvar os relatórios'
+data_path = "Diretório com o dataset"
 
 # ----------------------------------------------------------------
 # Função para plotar a figura com a matriz de confusão para cada Fold
@@ -99,7 +100,6 @@ data = np.array(data)
 labels = np.array(labels)
 
 print("Quantidade de imagens: ", len(data))
-#print("Labels: ", labels)
 
 # ----------------------------------------------------------------
 # Definir o tamanho das imagens de entrada
