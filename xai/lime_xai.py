@@ -15,16 +15,15 @@ import tracemalloc
 tracemalloc.start()
 tpi = time.time()
 
+# Verificar/ajustar para o padrão esperado pela CNN
+size = (224,224)
+#size = (229,229)
+
 # ----------------------------------------------------------------
 # Carrega o modelo treinado (arquivo .h5) utilizando o método 
 # load_model do pacote keras.models
 # ----------------------------------------------------------------
-#model = load_model("C:/Users/cleverson.vieira/Desktop/projeto-glaucoma_bkp_25042023/projeto-glaucoma/models/final_model_vgg16.h5")
-#model = load_model("C:/Users/cleverson.vieira/Desktop/projeto-glaucoma_bkp_25042023/projeto-glaucoma/models/final_model_vgg19.h5")
-#model = load_model("C:/Users/cleverson.vieira/Desktop/projeto-glaucoma_bkp_25042023/projeto-glaucoma/models/final_model_inceptionv3.h5")
-#model = load_model("C:/Users/cleverson.vieira/Desktop/projeto-glaucoma_bkp_25042023/projeto-glaucoma/models/final_model_densenet.h5")
-#model = load_model("C:/Users/cleverson.vieira/Desktop/projeto-glaucoma_bkp_25042023/projeto-glaucoma/models/final_model_xceptionnet.h5")
-model = load_model("C:/Users/cleverson.vieira/Desktop/projeto-glaucoma_bkp_25042023/projeto-glaucoma/models/final_model_resnet50.h5")
+model = load_model("Caminho para carregar o modelo treinado (.h5)")
 
 # ----------------------------------------------------------------
 # Carrega a imagem de exemplo, converte o padrão de cor (RGB) 
@@ -32,7 +31,7 @@ model = load_model("C:/Users/cleverson.vieira/Desktop/projeto-glaucoma_bkp_25042
 # ---------------------------------------------------------------- 
 img = cv2.imread('C:/Users/cleverson.vieira/Desktop/projeto-glaucoma_bkp_25042023/projeto-glaucoma/data/acrima/validation/positive/5826.jpg')
 img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-img = cv2.resize(img, (224,224), interpolation = cv2.INTER_CUBIC)
+img = cv2.resize(img, size, interpolation = cv2.INTER_CUBIC)
 img_orig = img.copy()
 
 # ----------------------------------------------------------------
