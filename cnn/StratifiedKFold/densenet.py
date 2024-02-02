@@ -1,28 +1,23 @@
+# Importação das Bibliotecas
 from keras.applications.densenet import DenseNet121
 from keras.layers import Dense, Dropout, Flatten, GlobalAveragePooling2D
 from keras.models import Model
 from keras.optimizers import Adam
 from keras.preprocessing.image import ImageDataGenerator
-#from sklearn.metrics import classification_report, confusion_matrix
 import matplotlib.pyplot as plt
 import os
 from keras.callbacks import ModelCheckpoint
 
 # Parâmetros
-epochs = 20
+epochs = 10
 resolution = 224
 batch_size = 8
 
 # Caminho dos diretórios (treinamento, teste, relatórios)
-#train_dir = 'C:/Users/Cleverson M. Vieira/Desktop/projeto-glaucoma/data/acrima/train'
-#test_dir = 'C:/Users/Cleverson M. Vieira/Desktop/projeto-glaucoma/data/acrima/test'
-#models_dir = 'C:/Users/Cleverson M. Vieira/Desktop/projeto-glaucoma/models'
-#reports_dir = 'C:/Users/Cleverson M. Vieira/Desktop/projeto-glaucoma/reports'
-
-train_dir = 'C:/Users/cleverson.vieira/Desktop/projeto-glaucoma/data/acrima/train'
-test_dir = 'C:/Users/cleverson.vieira/Desktop/projeto-glaucoma/data/acrima/test'
-models_dir = 'C:/Users/cleverson.vieira/Desktop/projeto-glaucoma/models'
-reports_dir = 'C:/Users/cleverson.vieira/Desktop/projeto-glaucoma/reports'
+train_dir = 'Caminho do diretório de treinamento'
+test_dir = 'Caminho do diretório de teste'
+models_dir = 'Caminho do diretório para salvar o modelo treinado'
+reports_dir = 'Caminho do diretório para salvar os relatórios'
 
 # Criação do modelo DenseNet
 base_model = DenseNet121(weights='imagenet', include_top=False, input_shape=(resolution, resolution, 3))
@@ -58,7 +53,6 @@ print('----------------------------------------')
 
 # Treinamento do modelo
 hist = model.fit(train_generator, steps_per_epoch=len(train_generator), epochs=epochs, validation_data=test_generator, validation_steps=len(test_generator), callbacks=checkpoint)
-#hist = model.fit(train_generator, steps_per_epoch=1, epochs=epochs, validation_data=test_generator, validation_steps=1)
 
 print('')
 print('----------------------------------------')
@@ -91,37 +85,10 @@ print('----------------------------------------')
 
 # Avaliação do modelo
 test_loss, test_acc = model.evaluate(test_generator, steps=len(test_generator), verbose=1)
-#test_loss, test_acc = model.evaluate(test_generator, steps=1, verbose=1)
 
 print('')
 print('Acurácia do modelo:', test_acc)
 print('Perda do modelo:', test_loss)
-
-
-#print('')
-#print('----------------------------------------')
-#print('Previsões do modelo e matriz de confusão')
-#print('----------------------------------------')
-
-
-# Previsões do modelo
-#y_pred = model.predict(test_generator, steps=len(test_generator)).round()
- 
-#y_pred = model.predict(test_generator)
-
-# Criação da matriz de confusão
-#cm = confusion_matrix(test_generator.classes, y_pred)
-#print(cm)
-
-# Plot da matriz de confusão
-#plt.imshow(cm, cmap=plt.cm.Blues)
-#plt.colorbar()
-#plt.xticks(range(2), ['Glaucoma', 'Normal'])
-#plt.yticks(range(2), ['Glaucoma', 'Normal'])
-#plt.xlabel('Previsão')
-#plt.ylabel('Real')
-#plt.show()
-
 
 print('')
 print('----------------------------------------')
