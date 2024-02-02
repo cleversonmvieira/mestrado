@@ -12,14 +12,13 @@ import tracemalloc
 import time
 
 tracemalloc.start()
-
-
 tpi = time.time()
 
 # ----------------------------------------------------------------
-# Parâmetros
+# Parâmetros - Ajustar de acordo com o padrão esperado pela CNN
 # ----------------------------------------------------------------
 resolution = 224
+#resolution = 229
 
 # ----------------------------------------------------------------
 # Método que obtém o nome do último layer convolucional da CNN
@@ -116,33 +115,25 @@ def save_and_display_gradcam(tpi, image, heatmap, conv_layer_name, cam_path="cam
     
     plt.show()
 
+
+
 # ----------------------------------------------------------------
 # Carrega o modelo treinado (arquivo .h5) utilizando o método 
 # load_model do pacote keras.models
 # ----------------------------------------------------------------
-#model = load_model("C:/Users/cleverson.vieira/Desktop/projeto-glaucoma_bkp_25042023/projeto-glaucoma/models/final_model_vgg16.h5")
-#model = load_model("C:/Users/cleverson.vieira/Desktop/projeto-glaucoma_bkp_25042023/projeto-glaucoma/models/final_model_vgg19.h5")
-#model = load_model("C:/Users/cleverson.vieira/Desktop/projeto-glaucoma_bkp_25042023/projeto-glaucoma/models/final_model_inceptionv3.h5")
-#model = load_model("C:/Users/cleverson.vieira/Desktop/projeto-glaucoma_bkp_25042023/projeto-glaucoma/models/final_model_densenet.h5")
-model = load_model("C:/Users/cleverson.vieira/Desktop/projeto-glaucoma_bkp_25042023/projeto-glaucoma/models/final_model_xceptionnet.h5")
-#model = load_model("C:/Users/cleverson.vieira/Desktop/projeto-glaucoma_bkp_25042023/projeto-glaucoma/models/final_model_resnet50.h5")
+model = load_model("Caminho para carregar o modelo treinado (.h5)")
 
 # ----------------------------------------------------------------
 # Armazena na variável "last_conv_layer_name" o nome do último 
-# layer convolucional da CNN carregada
+# ----------------------------------------------------------------
+#layer convolucional da CNN carregada
 last_conv_layer_name = get_last_conv_layer(model)
-
-""" 
-conv2D_layers = [layer.name for layer in reversed(model.layers) if len(layer.output_shape) == 4 and isinstance(layer, tf.keras.layers.Conv2D)]
-activation_layers = [layer.name for layer in reversed(model.layers) if len(layer.output_shape) == 4 and layer.__class__.__name__ == 'ReLU']
-all_layers = [layer.name for layer in reversed(model.layers) if len(layer.output_shape) == 4 and (layer.__class__.__name__ == 'ReLU' or isinstance(layer, tf.keras.layers.Conv2D))] 
-"""
 
 # ----------------------------------------------------------------
 # Carrega a imagem de exemplo, converte o padrão de cor (RGB) 
 # e redimensiona a imagem para o tamanho esperado pelo modelo
 # ---------------------------------------------------------------- 
-img = cv2.imread('C:/Users/cleverson.vieira/Desktop/projeto-glaucoma_bkp_25042023/projeto-glaucoma/data/acrima/validation/positive/5826.jpg')
+img = cv2.imread('Caminho para carregar a imagem de entrada')
 img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 img = cv2.resize(img, (resolution,resolution), interpolation = cv2.INTER_CUBIC)
 img_orig = img.copy()
@@ -154,13 +145,6 @@ img_orig = img.copy()
 img = np.array(img)
 img = np.expand_dims(img, axis=0)
 #img = img / 255.0
-
-""" 
-i = 0
-for i in range(5):
-  heatmap = make_gradcam_heatmap(img, model, all_layers[i])
-  save_and_display_gradcam(img_orig, heatmap, all_layers[i]) 
-"""
   
 heatmap = make_gradcam_heatmap(img, model, last_conv_layer_name)
 save_and_display_gradcam(tpi, img_orig, heatmap, last_conv_layer_name) 
