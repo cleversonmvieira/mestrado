@@ -52,7 +52,7 @@ def get_last_conv_layer(model):
         return last_conv_layer_name
     
 
-m = load_model('C:/Users/cleve/OneDrive/Documentos/Git/mestrado/models/acrima/final_model_vgg19.h5')
+m = load_model('caminho para o modelo treinado (.h5)')
 #conv_layer = get_last_conv_layer(m)
 conv_layer = m.get_layer('block5_conv4')
 #print (conv_layer)
@@ -77,7 +77,7 @@ def call_model_function(images, call_model_args=None, expected_keys=None):
 
 
 # Load the image
-im_orig = LoadImage('C:/Users/cleve/OneDrive/Documentos/Git/mestrado/data/origa/positive/origa_p (162).jpg')
+im_orig = LoadImage('Caminho da imagem de entrada')
 im = PreprocessImage(im_orig)
 
 _, predictions = model(np.array([im]))
@@ -104,5 +104,5 @@ P.figure(figsize=(ROWS * UPSCALE_FACTOR, COLS * UPSCALE_FACTOR))
 # Render the saliency masks.
 ShowGrayscaleImage(vanilla_mask_grayscale, title='Vanilla Gradient', ax=P.subplot(ROWS, COLS, 1))
 
-cv2.imshow("Vanilla Gradient", vanilla_mask_3d)
+cv2.imshow("Vanilla Gradients", vanilla_mask_3d)
 cv2.waitKey(0) 
