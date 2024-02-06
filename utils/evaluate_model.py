@@ -4,25 +4,29 @@ from sklearn.metrics import classification_report, confusion_matrix, accuracy_sc
 import matplotlib.pyplot as plt
 
 # Parâmetros
-epochs = 20
+epochs = 10
 resolution = 224
+#resolution = 229
 batch_size = 8
 
 # Caminho dos diretórios (treinamento, teste, relatórios)
-train_dir = 'C:/Users/cleverson.vieira/Desktop/projeto-glaucoma/data/acrima/train'
-test_dir = 'C:/Users/cleverson.vieira/Desktop/projeto-glaucoma/data/acrima/test'
-models_dir = 'C:/Users/cleverson.vieira/Desktop/projeto-glaucoma/models'
-reports_dir = 'C:/Users/cleverson.vieira/Desktop/projeto-glaucoma/reports'
+train_dir = 'Caminho para o diretório de treinamento'
+test_dir = 'Caminho para o diretório de teste'
+models_dir = 'Caminho para o diretório dos modelos'
+reports_dir = 'Caminho para o diretório dos relatórios'
 
 
 # Caminhos dos diretórios com os modelos treinados
-model_vgg16 = 'C:/Users/cleverson.vieira/Desktop/projeto-glaucoma/models/vgg16.h5'
-model_vgg19 = 'C:/Users/cleverson.vieira/Desktop/projeto-glaucoma/models/vgg19.h5'
-model_inceptionv3 = 'C:/Users/cleverson.vieira/Desktop/projeto-glaucoma/models/inceptionv3.h5'
-model_densenet = 'C:/Users/cleverson.vieira/Desktop/projeto-glaucoma/models/densenet.h5'
+model_vgg16 = 'Caminho para o diretório com o modelo treinado - vgg16.h5'
+model_vgg19 = 'Caminho para o diretório com o modelo treinado - vgg19.h5'
+model_inceptionv3 = 'Caminho para o diretório com o modelo treinado - inceptionv3.h5'
+model_densenet = 'Caminho para o diretório com o modelo treinado - densenet.h5'
+model_xception = 'Caminho para o diretório com o modelo treinado - xception.h5'
+model_resnet50 = 'Caminho para o diretório com o modelo treinado - resnet50.h5'
 
-# Carregar o modelo treinado
-model = load_model(model_vgg19)
+
+# Carregar o modelo treinado - Ajustar conforme modelo 
+model = load_model(model_vgg16)
 
 # Resumo do modelo
 model.summary()
@@ -71,27 +75,7 @@ print('Métricas de desempenho')
 print('----------------------------------------')
 
 print("Acurácia: ",accuracy_score(test_generator.classes, y_pred))
-print("Recall: ",recall_score(test_generator.classes, y_pred))
+print("Sensibilidade: ",recall_score(test_generator.classes, y_pred))
 print("Precisão: ",precision_score(test_generator.classes, y_pred))
 print("F1-Score: ",f1_score(test_generator.classes, y_pred))
 print("AUC: ",roc_auc_score(test_generator.classes, y_pred))
-
-
-
-# Previsões do modelo
-#y_pred = model.predict(test_generator, steps=len(test_generator)).round()
- 
-#y_pred = model.predict(test_generator)
-
-# Criação da matriz de confusão
-#cm = confusion_matrix(test_generator.classes, y_pred)
-#print(cm)
-
-# Plot da matriz de confusão
-#plt.imshow(cm, cmap=plt.cm.Blues)
-#plt.colorbar()
-#plt.xticks(range(2), ['Glaucoma', 'Normal'])
-#plt.yticks(range(2), ['Glaucoma', 'Normal'])
-#plt.xlabel('Previsão')
-#plt.ylabel('Real')
-#plt.show()
