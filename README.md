@@ -1,4 +1,4 @@
-Projeto de Mestrado: Inteligência Artificial Explicável (eXplainable Artificial Intelligence - XAI) na Classificação de Imagens de Retinografia para Apoio no Diagnóstico do Glaucoma
+Projeto de Mestrado: Inteligência Artificial Explicável (eXplainable Artificial Intelligence - XAI) Aplicada na Classificação de Imagens de Retinografia para Apoio no Diagnóstico do Glaucoma
 
 Modelos de aprendizado de máquina - Machine Learning (ML) - têm sido utilizados extensivamente em diversas áreas do conhecimento e possuem inúmeras aplicações em quase todos os segmentos da atividade humana. Na área da saúde, o uso de técnicas de inteligência artificial tem revolucionado o diagnóstico de doenças com excelentes desempenhos na classificação de imagens. Embora esses modelos tenham alcançado resultados extraordinários, a falta de explicabilidade das decisões tomadas pelos modelos tem sido uma limitação significativa para a adoção generalizada dessas técnicas na prática clínica. 
 
