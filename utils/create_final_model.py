@@ -9,7 +9,7 @@ k = 5
 # ----------------------------------------------------------------
 # Caminho para os diretórios
 # ----------------------------------------------------------------
-models_dir = 'C:/Users/cleverson.vieira/Desktop/projeto-glaucoma_bkp_25042023/projeto-glaucoma/models'
+models_dir = 'Caminho do diretório com os modelos'
 
 models = []
 for i in range(k):
