@@ -3,12 +3,12 @@ import shutil
 import os
 
 # definir diretório padrão e diretórios para mover imagens
-diretorio_padrao = 'C:/Users/cleverson.vieira/Desktop/projeto-glaucoma_bkp_25042023/projeto-glaucoma/data/papila'
-diretorio_positive = 'C:/Users/cleverson.vieira/Desktop/projeto-glaucoma_bkp_25042023/projeto-glaucoma/data/papila/positive'
-diretorio_negative = 'C:/Users/cleverson.vieira/Desktop/projeto-glaucoma_bkp_25042023/projeto-glaucoma/data/papila/negative'
+diretorio_padrao = 'Caminho do diretório com as imagens'
+diretorio_positive = 'Caminho do diretório positive'
+diretorio_negative = 'Caminho do diretório negative'
 
 # ler arquivo csv
-with open('C:/Users/cleverson.vieira/Desktop/projeto-glaucoma_bkp_25042023/projeto-glaucoma/data/papila/patient_data_os.csv', 'r') as csvfile:
+with open('Caminho do arquivo .csv', 'r') as csvfile:
     reader = csv.DictReader(csvfile)
     for row in reader:
         # obter nome do arquivo e valor da coluna "Glaucoma"
