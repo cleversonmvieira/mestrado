@@ -9,8 +9,8 @@ import shutil
 # diretório original das imagens e diretório para onde as imagens 
 # selecionadas serão movidas
 # ----------------------------------------------------------------
-original_dir = 'C:/Users/Cleverson M. Vieira/Desktop/projeto-glaucoma_bkp_25042023/projeto-glaucoma/data/acrima_/negative'
-selected_dir = 'C:/Users/Cleverson M. Vieira/Desktop/projeto-glaucoma_bkp_25042023/projeto-glaucoma/data/acrima_/validation/negative'
+original_dir = 'Caminho para o diretório com as imagens (negative/positive)'
+selected_dir = 'Caminho para o diretório onde as imagens serão movidas (negative/positive)'
 
 # ----------------------------------------------------------------
 # lista de todos os arquivos no diretório original
